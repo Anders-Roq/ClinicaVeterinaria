@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+
+    <persistence-unit name="clinicaveterinariaDB" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+        <class>com.dsc.clinicaveterinaria.Cliente</class>
+        <class>com.dsc.clinicaveterinaria.Animal</class>
+        <class>com.dsc.clinicaveterinaria.Cachorro</class>
+        <class>com.dsc.clinicaveterinaria.Gato</class>
+        <class>com.dsc.clinicaveterinaria.Veterinario</class>
+        <class>com.dsc.clinicaveterinaria.Consulta</class>
+        <class>com.dsc.clinicaveterinaria.Prescricao</class>
+        <class>com.dsc.clinicaveterinaria.Pagamento</class>
+
+        <properties>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:derby://localhost:1527/clinicaveterinariaDB"/>
+            <property name="jakarta.persistence.jdbc.user" value="root"/>
+            <property name="jakarta.persistence.jdbc.driver" value="org.apache.derby.client.ClientAutoloadedDriver"/>
+            <property name="jakarta.persistence.jdbc.password" value="root"/>
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="eclipselink.logging.level" value="FINE"/>
+            <property name="eclipselink.target-database" value="Derby"/>
+            <property name="eclipselink.jdbc.native-sql" value="true"/>
+        </properties>
+
+    </persistence-unit>
+</persistence>
