@@ -11,24 +11,7 @@ import org.junit.jupiter.api.Test;
 
 
 public class VeterinarioCrudTest extends BaseTest{
-    
-//     @Test
-//    public void testPersistirVeterinario() {
-//        Veterinario veterinario = new Veterinario(
-//                "Novo Veterinario Teste", 
-//                "CRMV-99999", 
-//                "Clínica Geral", 
-//                "121212121", 
-//                "vet.vet@vet.com"
-//        );
-//        
-//        em.persist(veterinario);
-//        em.flush(); 
-//
-//        assertNotNull(veterinario.getIdVeterinario());
-//    }
-    
-    
+
     @Test
     @SuppressWarnings("UnusedAssignment")
     public void atualizarVeterinarioMerge() {

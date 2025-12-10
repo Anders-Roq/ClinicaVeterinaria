@@ -11,22 +11,6 @@ import org.junit.jupiter.api.Test;
 
 public class ClientCrudTest extends BaseTest {
 
-//    @Test
-//    public void testPersistirCliente() {
-//        Cliente cliente = new Cliente(
-//                "Novo Cliente Teste",
-//                "054.218.290-49",
-//                "123456789",
-//                "teste@mail.com",
-//                "Rua de Teste, 123"
-//        );
-//
-//        em.persist(cliente);
-//        em.flush();
-//
-//        assertNotNull(cliente.getIdCliente());
-//    }
-
     @Test
     @SuppressWarnings("UnusedAssignment")
     public void atualizarClienteMerge() {
