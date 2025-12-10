@@ -23,14 +23,14 @@
     <ANIMAL TIPO_ANIMAL="CACHORRO" ANI_NOME="Bob" ANI_ESPECIE="Cachorro" ANI_RACA="Labrador" ANI_SEXO="M" ANI_DT_NASCIMENTO="2019-11-30" CLI_ID="5"/>
 
     <!-- As tabelas específicas usarão os mesmos IDs gerados automaticamente -->
-    <GATO ANI_ID="1"/>
-    <CACHORRO ANI_ID="2"/>
-    <GATO ANI_ID="3"/>
-    <CACHORRO ANI_ID="4"/>
-    <CACHORRO ANI_ID="5"/>
-    <CACHORRO ANI_ID="6"/>
-    <GATO ANI_ID="7"/>
-    <CACHORRO ANI_ID="8"/>
+    <GATO ANI_ID="1" GATO_CAIXA = "true" GATO_PREGUICOSO = "true"/>
+    <CACHORRO ANI_ID="2" CACHORRO_PORTE = "Grande" CACHORRO_ADESTRADO="true"/>
+    <GATO ANI_ID="3" GATO_CAIXA = "true" GATO_PREGUICOSO = "false"/>
+    <CACHORRO ANI_ID="4" CACHORRO_PORTE = "Pequeno" CACHORRO_ADESTRADO="true"/>
+    <CACHORRO ANI_ID="5" CACHORRO_PORTE = "Grande" CACHORRO_ADESTRADO="true"/>
+    <CACHORRO ANI_ID="6" CACHORRO_PORTE = "Medio" CACHORRO_ADESTRADO="false"/>
+    <GATO ANI_ID="7" GATO_CAIXA = "false" GATO_PREGUICOSO = "true"/>
+    <CACHORRO ANI_ID="8" CACHORRO_PORTE = "Grande" CACHORRO_ADESTRADO="true"/>
 
     <!-- Consultas usando IDs que serão gerados automaticamente -->
     <CONSULTA CON_DT_CONSULTA="2024-01-15 10:00:00" CON_MOTIVO="Check-up anual" CON_DIAGNOSTICO="Animal saudável, vacinação em dia" ANI_ID="1" VET_ID="1"/>
