@@ -54,13 +54,13 @@
     <CONSULTA CON_DT_CONSULTA="2024-03-25 11:00:00" CON_MOTIVO="Consulta dermatológica" CON_DIAGNOSTICO="Alergia alimentar diagnosticada" ANI_ID="4" VET_ID="3"/>
     <CONSULTA CON_DT_CONSULTA="2024-04-05 15:00:00" CON_MOTIVO="Vacinação" CON_DIAGNOSTICO="Vacinas atualizadas" ANI_ID="5" VET_ID="1"/>
     <CONSULTA CON_DT_CONSULTA="2024-04-18 10:30:00" CON_MOTIVO="Problema nos olhos" CON_DIAGNOSTICO="Conjuntivite tratada" ANI_ID="6" VET_ID="4"/>
-    <CONSULTA CON_DT_CONSULTA="2024-05-02 13:00:00" CON_MOTIVO="Check-up" CON_DIAGNOSTICO="Animal em bom estado de saúde" ANI_ID="7" VET_ID="1"/>
+    <CONSULTA CON_DT_CONSULTA="2024-05-02 13:00:00" CON_MOTIVO="Check-up anual" CON_DIAGNOSTICO="Animal em bom estado de saúde" ANI_ID="7" VET_ID="1"/>
     <CONSULTA CON_DT_CONSULTA="2024-05-15 16:00:00" CON_MOTIVO="Dor nas articulações" CON_DIAGNOSTICO="Artrite diagnosticada, tratamento iniciado" ANI_ID="8" VET_ID="2"/>
 
     <CONSULTA CON_DT_CONSULTA="2024-06-02 08:30:00" CON_MOTIVO="Vacinação" CON_DIAGNOSTICO="Vacinas atualizadas" ANI_ID="9" VET_ID="1"/>
     <CONSULTA CON_DT_CONSULTA="2024-06-15 10:45:00" CON_MOTIVO="Problema nos ouvidos" CON_DIAGNOSTICO="Otite" ANI_ID="10" VET_ID="2"/>
-    <CONSULTA CON_DT_CONSULTA="2024-07-01 13:20:00" CON_MOTIVO="Check-up" CON_DIAGNOSTICO="Animal em bom estado de saúde" ANI_ID="11" VET_ID="3"/>
-    <CONSULTA CON_DT_CONSULTA="2024-07-29 16:10:00" CON_MOTIVO=" Problema nos rins" CON_DIAGNOSTICO=" Doença renal diagnosticada, tratamento iniciado" ANI_ID="12" VET_ID="4"/>
+    <CONSULTA CON_DT_CONSULTA="2024-07-01 13:20:00" CON_MOTIVO="Check-up anual" CON_DIAGNOSTICO="Animal em bom estado de saúde" ANI_ID="11" VET_ID="3"/>
+    <CONSULTA CON_DT_CONSULTA="2024-07-29 16:10:00" CON_MOTIVO="Problema nos rins" CON_DIAGNOSTICO="Doença renal diagnosticada, tratamento iniciado" ANI_ID="12" VET_ID="4"/>
 
 
     <PRESCRICAO PRE_MEDICAMENTO="Antibiótico" PRE_DOSAGEM="250mg" PRE_FREQUENCIA="A cada 12 horas" PRE_DURACAO="7 dias" CON_ID="2"/>
