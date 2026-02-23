@@ -1,16 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.dsc.clinicaveterinaria;
 
 import java.io.Serializable;
 import java.util.List;
 import jakarta.persistence.*;
-/**
- *
- * @author dla19
- */
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+
+
 @Entity
 @Table(name = "VETERINARIO")
 public class Veterinario implements Serializable {
@@ -18,27 +17,38 @@ public class Veterinario implements Serializable {
 // Chave Primária
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "VET_ID", nullable = false)
+    @Column(name = "VET_ID")
     private Long idVeterinario;
 
-    
-    @Column(name = "VET_NOME", nullable = false, length = 150)
+    @NotBlank
+    @Size(min = 3, max = 100)
+    @Column(name = "VET_NOME")
     private String nome;
     
+    @NotBlank
+    @Pattern(regexp = "[A-Z]{3}-[A-Z]{2}-\\d{4,6}", message = "Formato inválido para CRMV (ex: CRM-PE-12345)")
+    @Size(max = 15)    
     // CRMV é o identificador profissional, deve ser único.
-    @Column(name = "VET_CRMV", nullable = false, length = 15, unique = true)
+    @Column(name = "VET_CRMV", unique = true)
     private String crmv;
     
+    @NotBlank
+    @Size(max = 50)
     // Especialidade é obrigatória, mas não única.
-    @Column(name = "VET_ESPECIALIDADE", nullable = false, length = 50)
+    @Column(name = "VET_ESPECIALIDADE")
     private String especialidade;
     
+    @NotBlank(message = "Telefone é obrigatório.")
+    @Pattern(regexp = "\\d{9}", message = "Não precisa do DDD")
+    @Size(min =9, max = 9, message = "Deve conter 9 digitos") 
     // Telefone
-    @Column(name = "VET_TELEFONE", nullable = true, length = 15) 
+    @Column(name = "VET_TELEFONE") 
     private String telefone;
     
-    
-    @Column(name = "VET_EMAIL", nullable = true, length = 100)
+    @NotBlank
+    @Email
+    @Size(max = 30)
+    @Column(name = "VET_EMAIL")
     private String email;    
     
     @OneToMany(mappedBy = "veterinario", cascade = CascadeType.ALL)    

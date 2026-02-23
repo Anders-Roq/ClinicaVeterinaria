@@ -1,16 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.dsc.clinicaveterinaria;
 
 import java.io.Serializable;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
-/**
- *
- * @author dla19
- */
 @Entity
 @Table(name = "PRESCRICAO")
 public class Prescricao implements Serializable {
@@ -18,26 +15,32 @@ public class Prescricao implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "PRE_ID", nullable = false)
+    @Column(name = "PRE_ID")
     private Long idPrescricao;
 
-    
-    
-    @Column(name = "PRE_MEDICAMENTO", nullable = false, length = 100)
+    @NotBlank
+    @Size(min = 5, max = 50)    
+    @Column(name = "PRE_MEDICAMENTO")
     private String medicamento;
     
-    @Column(name = "PRE_DOSAGEM", nullable = false, length = 50)
+    @NotBlank
+    @Size(max = 30)
+    @Column(name = "PRE_DOSAGEM")
     private String dosagem;
     
-    @Column(name = "PRE_FREQUENCIA", nullable = false, length = 50)
+    @NotBlank
+    @Size(max = 30)    
+    @Column(name = "PRE_FREQUENCIA")
     private String frequencia;
     
-    @Column(name = "PRE_DURACAO", nullable = false, length = 50)
+    @NotBlank  
+    @Size(max = 30)    
+    @Column(name = "PRE_DURACAO")
     private String duracao;
 
-    
+    @NotNull
     @ManyToOne
-    @JoinColumn(name = "CON_ID", nullable = false)
+    @JoinColumn(name = "CON_ID")
     private Consulta consulta;
 
     public Prescricao() {}

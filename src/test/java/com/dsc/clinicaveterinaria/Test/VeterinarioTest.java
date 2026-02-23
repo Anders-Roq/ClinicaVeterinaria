@@ -10,7 +10,7 @@ public class VeterinarioTest extends BaseTest {
     public void testPersistirVeterinario() {
         Veterinario veterinario = new Veterinario(
                 "Novo Veterinario Teste", 
-                "CRMV-99999", 
+                "CRM-PE-99999", 
                 "Clínica Geral", 
                 "121212121", 
                 "vet.vet@vet.com"
@@ -29,9 +29,9 @@ public class VeterinarioTest extends BaseTest {
         
         assertNotNull(veterinario);
         assertEquals("Dr. João Silva", veterinario.getNome());
-        assertEquals("CRMV-12345", veterinario.getCrmv());
+        assertEquals("CRM-PE-12345", veterinario.getCrmv());
         // Verifica se veterinario tem alguma consulta
         assertNotNull(veterinario.getConsultas());
-        assertEquals(4, veterinario.getConsultas().size()); // nenhuma consulta marcada
+        assertEquals(5, veterinario.getConsultas().size()); // nenhuma consulta marcada
     }
 }

@@ -1,16 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.dsc.clinicaveterinaria;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import jakarta.persistence.*;
-/**
- *
- * @author dla19
- */
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
+
+
 @Entity
 @Table(name = "PAGAMENTO")
 public class Pagamento implements Serializable {
@@ -18,25 +16,28 @@ public class Pagamento implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "PAG_ID", nullable = false)
+    @Column(name = "PAG_ID")
     private Long idPagamento;
     
-    
-    @Column(name = "PAG_VALOR_TOTAL", nullable = false) 
+    @Positive    
+    @Column(name = "PAG_VALOR_TOTAL") 
     private double valorTotal;
     
-
-    @Column(name = "PAG_METODO", nullable = false, length = 50)
+    @NotBlank
+    @Size(min = 3, max = 30)    
+    @Column(name = "PAG_METODO")
     private String metodoPagamento;
     
 
-    @Column(name = "PAG_DT_PAGAMENTO", nullable = false)
+    @NotNull
+    @Column(name = "PAG_DT_PAGAMENTO")
     private LocalDateTime dataPagamento;
 
 
+    @NotNull
     @OneToOne
     // UNIQUE TRUE para garantir o One-to-One.
-    @JoinColumn(name = "CON_ID", nullable = false, unique = true) 
+    @JoinColumn(name = "CON_ID", unique = true) 
     private Consulta consulta;
 
     public Pagamento() {}

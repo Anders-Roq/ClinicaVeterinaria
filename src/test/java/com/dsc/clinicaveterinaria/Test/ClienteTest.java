@@ -12,7 +12,7 @@ public class ClienteTest extends BaseTest {
                 "Novo Cliente Teste",
                 "054.218.290-49",
                 "123456789",
-                "teste@mail.com",
+                "teste@gmail.com",
                 "Rua de Teste, 123"
         );
 
@@ -32,10 +32,10 @@ public class ClienteTest extends BaseTest {
         assertEquals("José", cliente.getNome());
         assertEquals("925.225.900-73", cliente.getCpf());
         assertEquals("987654321", cliente.getTelefone());
-        assertEquals("jose@mail.com", cliente.getEmail());
+        assertEquals("jose@gmail.com", cliente.getEmail());
         assertEquals("Rua A, 100", cliente.getEndereco());
         // Verifica se o relacionamento de animais foi carregado
         assertNotNull(cliente.getAnimais());
-        assertEquals(2, cliente.getAnimais().size()); // José tem "Fofinho" e "Rex"
+        assertEquals(3, cliente.getAnimais().size()); // José tem "Fofinho" e "Rex"
     }
 }

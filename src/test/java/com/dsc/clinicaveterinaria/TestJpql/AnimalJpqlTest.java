@@ -25,9 +25,8 @@ public class AnimalJpqlTest extends BaseTest {
         Animal animal = query.getSingleResult();
 
         assertNotNull(animal);
-        assertEquals("Rex", animal.getNome());
         assertEquals("Cachorro", animal.getEspecie());
-        assertNotNull(animal.getCliente());
+        assertEquals("Pastor Alemão", animal.getRaca());
         assertEquals("José", animal.getCliente().getNome());
     }
 

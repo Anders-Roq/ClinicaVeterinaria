@@ -4,6 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
 @Table(name = "CLIENTE")
@@ -11,22 +17,35 @@ public class Cliente implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CLI_ID", nullable = false)
+    @Column(name = "CLI_ID")
     private Long idCliente;
+    
 
-    @Column(name = "CLI_NOME", nullable = false, length = 100)
+    @NotBlank(message = "Campo Nome é Obrigatório")
+    @Size(min = 3, max = 50, message = "Deve ter entre 3 e 50 caracteres.")
+    @Column(name = "CLI_NOME")
     private String nome;
 
-    @Column(name = "CLI_CPF", nullable = false, length = 14, unique = true)
+    @NotNull()
+    @CPF()
+    @Column(name = "CLI_CPF", unique = true)
     private String cpf;
 
-    @Column(name = "CLI_TELEFONE", nullable = false, length = 20)
+    @NotBlank(message = "Telefone é obrigatório.")
+    @Pattern(regexp = "\\d{9}", message = "Não precisa do DDD")
+    @Size(min =9, max = 9, message = "Deve conter 9 digitos")
+    @Column(name = "CLI_TELEFONE")
     private String telefone;
 
-    @Column(name = "CLI_EMAIL", nullable = true, length = 100)
+    @NotBlank
+    @Email
+    @Size(max = 30)
+    @Column(name = "CLI_EMAIL")
     private String email;
 
-    @Column(name = "CLI_ENDERECO", nullable = false, length = 255)
+    @NotBlank(message = "Endereço é obrigatório, apenas nome da rua, bairro e numero")
+    @Size(max = 255)
+    @Column(name = "CLI_ENDERECO")
     private String endereco;
 
     //faz o find (do teste) carregar os animais imediatamente.

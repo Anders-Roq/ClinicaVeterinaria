@@ -69,7 +69,7 @@ public class ConsultaTest extends BaseTest {
 
         assertNotNull(veterinario);
         assertEquals("Dr. João Silva", veterinario.getNome());
-        assertEquals("CRMV-12345", veterinario.getCrmv());
+        assertEquals("CRM-PE-12345", veterinario.getCrmv());
         assertEquals("Clínica Geral", veterinario.getEspecialidade());
     }
 
@@ -102,7 +102,7 @@ public class ConsultaTest extends BaseTest {
         List<Consulta> consultas = veterinario.getConsultas();
 
         assertNotNull(consultas);
-        assertEquals(4, consultas.size());
+        assertEquals(5, consultas.size());
 
         for (Consulta consulta : consultas) {
             assertEquals(veterinario.getIdVeterinario(), consulta.getVeterinario().getIdVeterinario());

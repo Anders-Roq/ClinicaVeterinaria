@@ -3,12 +3,13 @@ package com.dsc.clinicaveterinaria;
 import java.io.Serializable;
 import java.time.LocalDate;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
+
 import java.util.List;
 
-/**
- *
- * @author dla19
- */
 @Entity
 @Table(name = "ANIMAL")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -18,27 +19,36 @@ public abstract class Animal implements Serializable {
     // Chave Primária
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ANI_ID", nullable = false)
+    @Column(name = "ANI_ID")
     private Long idAnimal;
 
     // Atributos
-    @Column(name = "ANI_NOME", nullable = false, length = 100)
+    @NotBlank
+    @Size(min = 3, max = 20)
+    @Column(name = "ANI_NOME")
     private String nome;
 
-    @Column(name = "ANI_ESPECIE", nullable = false, length = 50)
+    @NotBlank
+    @Size(max = 30)
+    @Column(name = "ANI_ESPECIE")
     private String especie;
 
-    @Column(name = "ANI_RACA", nullable = false, length = 50)
+    @NotBlank
+    @Size(max = 30)
+    @Column(name = "ANI_RACA")
     private String raca;
 
-    @Column(name = "ANI_SEXO", nullable = false, length = 1)
-    private char sexo;
+    @NotNull
+    @Column(name = "ANI_SEXO")
+    private Character sexo;
 
-    @Column(name = "ANI_DT_NASCIMENTO", nullable = false)
+    @NotNull
+    @Column(name = "ANI_DT_NASCIMENTO")
     private LocalDate dataNascimento;
 
+    @NotNull
     @ManyToOne
-    @JoinColumn(name = "CLI_ID", nullable = false)
+    @JoinColumn(name = "CLI_ID")
     private Cliente cliente;
 
     @OneToMany(mappedBy = "animal", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)

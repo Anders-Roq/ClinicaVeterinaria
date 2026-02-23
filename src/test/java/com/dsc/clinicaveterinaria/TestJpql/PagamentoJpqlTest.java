@@ -22,9 +22,7 @@ public class PagamentoJpqlTest extends BaseTest {
         Double mediaMetodo = queryValor.getSingleResult();
 
         assertNotNull(mediaMetodo);
-        // (180 + 120 + 140) / 3 = 146,66...
-        double arredondado = Math.round(mediaMetodo * 100.0) / 100.0;
-        assertEquals(145, arredondado, 0.01);
+        assertEquals(145, mediaMetodo);
     }
 
     @Test
@@ -37,7 +35,7 @@ public class PagamentoJpqlTest extends BaseTest {
 
         assertNotNull(somaTotal);
         // conforme dataset
-        assertEquals(2580.00, somaTotal, 0.01);
+        assertEquals(2580.00, somaTotal);
     }
 
     @Test
@@ -53,7 +51,7 @@ public class PagamentoJpqlTest extends BaseTest {
 
         double maiorValor = queryEntre.getSingleResult();
 
-        assertEquals(510.00, maiorValor, 0.01);
+        assertEquals(510.00, maiorValor);
     }
 
     @Test
@@ -65,7 +63,7 @@ public class PagamentoJpqlTest extends BaseTest {
         Double menorPagamento = queryMinimo.getSingleResult();
 
         assertNotNull(menorPagamento);
-        assertEquals(110.00, menorPagamento, 0.01);
+        assertEquals(110.00, menorPagamento);
     }
 
     @Test

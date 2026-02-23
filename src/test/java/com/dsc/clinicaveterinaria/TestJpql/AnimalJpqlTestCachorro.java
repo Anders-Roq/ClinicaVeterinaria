@@ -45,16 +45,26 @@ public class AnimalJpqlTestCachorro extends BaseTest {
     @Test
     public void cachorroIdadeMaiorQueDezTeste() {
 
+        LocalDate referencia = LocalDate.now();
+        LocalDate dezAnos = referencia.minusYears(10);
+
         String jpql = """
-                SELECT c.nome
-                FROM Cachorro c
-                WHERE FUNCTION('YEAR', CURRENT_DATE) - FUNCTION('YEAR', c.dataNascimento) > 10
-                ORDER BY c.dataNascimento
-                """;
+             SELECT c.nome
+            FROM Cachorro c
+            WHERE c.dataNascimento < :limite
+            ORDER BY c.dataNascimento ASC
+            """;
+        
         TypedQuery<String> query = em.createQuery(jpql, String.class);
+        query.setParameter("limite", dezAnos);
+        
         List<String> nomes = query.getResultList();
 
-        assertEquals(2, nomes.size());
+        assertFalse(nomes.isEmpty());
+        
+       assertTrue(nomes.contains("Agamenon"));
+       assertTrue(nomes.contains("Desirée"));
+       assertEquals(2, nomes.size());
     }
 
     @Test

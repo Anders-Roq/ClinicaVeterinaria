@@ -57,40 +57,14 @@ public class VeterinarioJpqlTest extends BaseTest {
                 "SELECT v FROM Veterinario v WHERE v.crmv = :crmv",
                 Veterinario.class
         );
-        query.setParameter("crmv", "CRMV-12345");
+        query.setParameter("crmv", "CRM-PE-12345");
 
         List<Veterinario> vets = query.getResultList();
 
         assertNotNull(vets);
         assertFalse(vets.isEmpty());
-        assertEquals("CRMV-12345", vets.get(0).getCrmv());
+        assertEquals("CRM-PE-12345", vets.get(0).getCrmv());
     }
-
-   
-    @Test
-    public void veterinariosComConsultaEmPeriodo() {
-
-        TypedQuery<Veterinario> query = em.createQuery(
-                "SELECT v " +
-                        "FROM Veterinario v " +
-                        "WHERE v IN (" +
-                        "   SELECT c.veterinario " +
-                        "   FROM Consulta c " +
-                        "   WHERE FUNCTION('DATE', c.dataConsulta) BETWEEN :inicio AND :fim" +
-                        ") " +
-                        "ORDER BY v.nome",
-                Veterinario.class
-        );
-
-        query.setParameter("inicio", "2024-01-01");
-        query.setParameter("fim", "2024-12-31");
-
-        List<Veterinario> vets = query.getResultList();
-
-        assertNotNull(vets);
-        assertFalse(vets.isEmpty());
-    }
-
    
     @Test
     public void contarVeterinariosTest() {

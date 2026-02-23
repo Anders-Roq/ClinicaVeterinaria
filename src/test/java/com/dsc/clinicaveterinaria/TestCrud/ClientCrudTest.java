@@ -17,7 +17,7 @@ public class ClientCrudTest extends BaseTest {
     public void atualizarClienteMerge() {
 
         String novoEmail = "fulano_de_tal2@gmail.com";
-        String telefone = "(81) 990901010";
+        String telefone = "990901010";
         Cliente cliente = em.find(Cliente.class, 1L);
         cliente.setEmail(novoEmail);
         cliente.setTelefone(telefone);
@@ -34,7 +34,7 @@ public class ClientCrudTest extends BaseTest {
     public void atualizarCliente() {
 
         String novoEmail = "cicrano_de_tal@gmail.com";
-        String telefone = "(81) 984844599";
+        String telefone = "984844599";
         Long id = 2L;
         Cliente cliente = em.find(Cliente.class, id);
         cliente.setEmail(novoEmail);

@@ -5,6 +5,7 @@ import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 
@@ -15,9 +16,12 @@ import java.time.LocalDate;
 
 public class Gato extends Animal{
     
-    @Column(name = "GATO_CAIXA", nullable = false, length = 5)
+    @NotNull 
+    @Column(name = "GATO_CAIXA")
     private boolean gostaDeCaixa;
-    @Column(name = "GATO_PREGUICOSO", nullable = false, length = 5)
+
+    @NotNull 
+    @Column(name = "GATO_PREGUICOSO")
     private boolean preguicoso;
     
     public Gato() {}

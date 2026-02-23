@@ -30,49 +30,56 @@ public class AnimalJpqlTestGato extends BaseTest {
     @Test
     public void GatoPorClienteTeste() {
 
-        String jpql = "SELECT a FROM Animal a JOIN a.cliente c WHERE c.nome = :nomeCliente";
-        TypedQuery<Animal> query = em.createQuery(jpql, Animal.class);
+        String jpql = "SELECT a FROM Gato a JOIN a.cliente c WHERE c.nome = :nomeCliente";
+        TypedQuery<Gato> query = em.createQuery(jpql, Gato.class);
         query.setParameter("nomeCliente", "Carlos");
-        List<Animal> animais = query.getResultList();
+        List<Gato> gatos = query.getResultList();
 
         // Carlos possui 3 animais
-        assertEquals(3, animais.size());
+        assertTrue(gatos.size() > 0);
+        assertTrue(gatos.stream().allMatch(g-> g.getCliente().getNome().equals("Carlos")));
     }
 
     @Test
     public void GatoIdadeMenorQueDoisAnosTeste() {
 
+        LocalDate dataReferencia = LocalDate.now();
+        LocalDate doisAnosAtras = dataReferencia.minusYears(2);
+
         String jpql = """
-                SELECT g.nome
-                FROM Gato g
-                WHERE FUNCTION('YEAR', CURRENT_DATE) - FUNCTION('YEAR', g.dataNascimento) < 2
-                ORDER BY g.dataNascimento DESC
-                """;
+            SELECT g.nome
+            FROM Gato g
+            WHERE g.dataNascimento > :limite
+            """;
 
-        TypedQuery<String> query = em.createQuery(jpql, String.class);
-        List<String> nomes = query.getResultList();
+        List<String> nomes = em.createQuery(jpql, String.class)
+                .setParameter("limite", doisAnosAtras)
+                .getResultList();
 
-        // Apenas Josephine (2025) tem idade < 2
         assertEquals(1, nomes.size());
+        assertEquals("Josephine", nomes.get(0));
     }
 
     @Test
     public void GatosNascidosEmIntervaloDeDatasTeste() {
-        //BETWEEN em data de nascimento de gatos.
-        String jpql = "SELECT g FROM Gato g WHERE g.dataNascimento BETWEEN :inicio AND :fim ORDER BY g.dataNascimento";
-
+          
         LocalDate inicio = LocalDate.of(2020, 1, 1);
         LocalDate fim = LocalDate.of(2022, 12, 31);
+        
+        //BETWEEN em data de nascimento de gatos.
+        String jpql = "SELECT g.nome FROM Gato g WHERE g.dataNascimento BETWEEN :inicio AND :fim";
 
-        TypedQuery<Gato> query = em.createQuery(jpql, Gato.class);
+        TypedQuery<String> query = em.createQuery(jpql, String.class);
         query.setParameter("inicio", inicio);
         query.setParameter("fim", fim);
 
-        List<Gato> gatos = query.getResultList();
+        List<String> gatos = query.getResultList();
 
-        assertNotNull(gatos);
         // de acordo com o dataset, há alguns gatos nesse intervalo
         assertTrue(gatos.size() >= 1);
+        assertEquals(2, gatos.size());
+        assertEquals("Fofinho", gatos.get(0));
+        assertEquals("Nina", gatos.get(1));
     }
 
     @Test

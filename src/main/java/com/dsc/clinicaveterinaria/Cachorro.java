@@ -5,6 +5,9 @@ import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 
 
@@ -14,9 +17,13 @@ import java.time.LocalDate;
 @PrimaryKeyJoinColumn(name = "ANI_ID")
 public class Cachorro extends Animal {
     
-    @Column(name = "CACHORRO_PORTE", nullable = false, length = 30)
+    @NotBlank
+    @Size(max = 30)
+    @Column(name = "CACHORRO_PORTE")
     private String porte;
-    @Column(name = "CACHORRO_ADESTRADO", nullable = false, length = 30)
+    
+    @NotNull 
+    @Column(name = "CACHORRO_ADESTRADO")
     private boolean adestrado;
     
     public Cachorro () {}

@@ -1,18 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.dsc.clinicaveterinaria;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
-/**
- *
- * @author dla19
- */
+
 @Entity
 @Table(name = "CONSULTA")
 public class Consulta implements Serializable {
@@ -20,30 +16,33 @@ public class Consulta implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CON_ID", nullable = false)
+    @Column(name = "CON_ID")
     private Long idConsulta;
 
-    
-    @Column(name = "CON_DT_CONSULTA", nullable = false)
+    @NotNull
+    @Column(name = "CON_DT_CONSULTA")
     private LocalDateTime dataConsulta;
     
     // Motivo da consulta.
-    @Column(name = "CON_MOTIVO", nullable = false, length = 255)
+    @NotBlank
+    @Size(min = 10, max = 255)
+    @Column(name = "CON_MOTIVO")
     private String motivo;
     
     
-    @Column(name = "CON_DIAGNOSTICO", nullable = true, length = 1000) //Nullable TRUE, pois pode ser preenchido posteriormente
+    @Size(min = 10, max = 255)
+    @Column(name = "CON_DIAGNOSTICO") //Nullable TRUE, pois pode ser preenchido posteriormente
     private String diagnostico;
     
     
-    
+    @NotNull
     @ManyToOne
-    @JoinColumn(name = "ANI_ID", nullable = false)    
+    @JoinColumn(name = "ANI_ID")    
     private Animal animal;
     
-    
+    @NotNull
     @ManyToOne
-    @JoinColumn(name = "VET_ID", nullable = false)
+    @JoinColumn(name = "VET_ID")
     private Veterinario veterinario;
     
     @OneToMany(mappedBy = "consulta", cascade = CascadeType.ALL, orphanRemoval = true)
