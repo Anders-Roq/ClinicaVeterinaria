@@ -1,12 +1,13 @@
 package com.dsc.clinicaveterinaria;
 
+import com.dsc.clinicaveterinaria.validation.SexoValido;
 import java.io.Serializable;
 import java.time.LocalDate;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
-
 
 import java.util.List;
 
@@ -16,39 +17,37 @@ import java.util.List;
 @DiscriminatorColumn(name = "tipo_animal", discriminatorType = DiscriminatorType.STRING)
 public abstract class Animal implements Serializable {
 
-    // Chave Primária
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ANI_ID")
     private Long idAnimal;
 
-    // Atributos
-    @NotBlank
-    @Size(min = 3, max = 20)
-    @Column(name = "ANI_NOME")
+    @NotBlank(message = "{animal.nome.notblank}")
+    @Size(min = 3, max = 20, message = "{animal.nome.size}")
+    @Column(name = "ANI_NOME", nullable = false)
     private String nome;
 
-    @NotBlank
-    @Size(max = 30)
-    @Column(name = "ANI_ESPECIE")
+    @NotBlank(message = "{animal.especie.notblank}")
+    @Column(name = "ANI_ESPECIE", nullable = false)
     private String especie;
 
-    @NotBlank
-    @Size(max = 30)
-    @Column(name = "ANI_RACA")
+    @NotBlank(message = "{animal.raca.notblank}")
+    @Column(name = "ANI_RACA", nullable = false)
     private String raca;
 
-    @NotNull
-    @Column(name = "ANI_SEXO")
+    @NotNull(message = "{animal.sexo.notnull}")
+    @SexoValido
+    @Column(name = "ANI_SEXO", nullable = false)
     private Character sexo;
 
-    @NotNull
-    @Column(name = "ANI_DT_NASCIMENTO")
+    @NotNull(message = "{animal.dataNascimento.notnull}")
+    @Past(message = "{animal.dataNascimento.past}")
+    @Column(name = "ANI_DT_NASCIMENTO", nullable = false)
     private LocalDate dataNascimento;
 
-    @NotNull
+    @NotNull(message = "{animal.cliente.notnull}")
     @ManyToOne
-    @JoinColumn(name = "CLI_ID")
+    @JoinColumn(name = "CLI_ID", nullable = false)
     private Cliente cliente;
 
     @OneToMany(mappedBy = "animal", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
@@ -133,8 +132,12 @@ public abstract class Animal implements Serializable {
     // Adicionar equals e hashCode baseados no idAnimal
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Animal)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Animal)) {
+            return false;
+        }
         Animal animal = (Animal) o;
         return idAnimal != null && idAnimal.equals(animal.idAnimal);
     }

@@ -13,41 +13,35 @@ import java.time.LocalDate;
 @DiscriminatorValue("GATO")
 @Table(name = "GATO")
 @PrimaryKeyJoinColumn(name = "ANI_ID")
+public class Gato extends Animal {
 
-public class Gato extends Animal{
-    
-    @NotNull 
+    @NotNull(message = "{gato.caixa.notnull}")
     @Column(name = "GATO_CAIXA")
-    private boolean gostaDeCaixa;
+    private Boolean gostaDeCaixa;
 
-    @NotNull 
+    @NotNull(message = "{gato.preguicoso.notnull}")
     @Column(name = "GATO_PREGUICOSO")
-    private boolean preguicoso;
-    
+    private Boolean preguicoso;
+
     public Gato() {}
 
-    public Gato(String nome, String especie, String raca, char sexo, LocalDate dataNascimento, Cliente cliente, boolean gostDeCaixa, boolean preguicoso) {
+    public Gato(String nome, String especie, String raca,
+                char sexo, LocalDate dataNascimento,
+                Cliente cliente, Boolean gostaDeCaixa,
+                Boolean preguicoso) {
+
         super(nome, especie, raca, sexo, dataNascimento, cliente);
         this.gostaDeCaixa = gostaDeCaixa;
-        this.preguicoso = preguicoso;        
-    }
-
-    public boolean isGostaDeCaixa() {
-        return gostaDeCaixa;
-    }
-
-    public void setGostaDeCaixa(boolean gostaDeCaixa) {
-        this.gostaDeCaixa = gostaDeCaixa;
-    }
-
-    public boolean isPreguicoso() {
-        return preguicoso;
-    }
-
-    public void setPreguicoso(boolean preguicoso) {
         this.preguicoso = preguicoso;
     }
-    
-    
-    
+
+    public Boolean getGostaDeCaixa() { return gostaDeCaixa; }
+    public void setGostaDeCaixa(Boolean gostaDeCaixa) { this.gostaDeCaixa = gostaDeCaixa; }
+
+    public Boolean getPreguicoso() { return preguicoso; }
+    public void setPreguicoso(Boolean preguicoso) { this.preguicoso = preguicoso; }
 }
+    
+    
+    
+
