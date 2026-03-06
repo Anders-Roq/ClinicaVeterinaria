@@ -16,7 +16,7 @@ public class ConsultaCrudTest extends BaseTest {
     @SuppressWarnings("UnusedAssignment")
     public void atualizarConsultaMerge() {
 
-        String novoCrmv = "CRM-PE-69696";
+        String novoCrmv = "CRMV-PE-69696";
         String telefone = "990901010";
         Veterinario veterinario = em.find(Veterinario.class, 1L);
         veterinario.setCrmv(novoCrmv);
@@ -33,7 +33,7 @@ public class ConsultaCrudTest extends BaseTest {
     @Test
     public void atualizarConsulta() {
 
-        String novoCrmv = "CRM-PE-55555";
+        String novoCrmv = "CRMV-PE-55555";
         String telefone = "990902020";
         Long id = 2L;
         Veterinario veterinario = em.find(Veterinario.class, id);

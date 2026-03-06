@@ -18,7 +18,7 @@ public class PagamentoTest extends BaseTest {
         Veterinario vet = em.find(Veterinario.class, 1L);
 
         Consulta consulta = new Consulta(
-                LocalDateTime.of(2025, 1, 10, 14, 0),
+                LocalDateTime.of(2026, 2, 14, 14, 0),
                 "Retorno pós-cirurgia",
                 "Recuperação evoluindo bem",
                 animal,
@@ -31,7 +31,7 @@ public class PagamentoTest extends BaseTest {
         Pagamento pagamento = new Pagamento(
                 320.00,
                 "Cartão de Crédito",
-                LocalDateTime.of(2025, 2, 1, 9, 45),
+                LocalDateTime.of(2026, 2, 14, 14, 0),
                 consulta
         );
 
@@ -52,7 +52,7 @@ public class PagamentoTest extends BaseTest {
         assertNotNull(pagamento);
         assertEquals(150.00, pagamento.getValorTotal(), 0.001);
         assertEquals("Dinheiro", pagamento.getMetodoPagamento());
-        assertEquals(LocalDateTime.of(2024, 1, 15, 10, 30, 0), pagamento.getDataPagamento());
+        assertEquals(LocalDateTime.of(2026,01,01,10,00,00), pagamento.getDataPagamento());
 
         // Verifica relacionamento
         assertNotNull(pagamento.getConsulta());

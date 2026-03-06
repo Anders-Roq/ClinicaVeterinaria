@@ -18,7 +18,7 @@ public class ConsultaTest extends BaseTest {
         Veterinario vet = em.find(Veterinario.class, 1L);
 
         Consulta consulta = new Consulta(
-                LocalDateTime.of(2025, 1, 10, 14, 0),
+                LocalDateTime.of(2026, 1, 10, 14, 0),
                 "Avaliação clínica",
                 "Paciente apresentou melhora significativa.",
                 animal,
@@ -40,7 +40,7 @@ public class ConsultaTest extends BaseTest {
         Consulta consulta = em.find(Consulta.class, 1L);
 
         assertNotNull(consulta);
-        assertEquals(LocalDateTime.of(2024, 1, 15, 10, 0), consulta.getDataConsulta());
+        assertEquals(LocalDateTime.of(2026,01,01,10,00,00), consulta.getDataConsulta());
         assertEquals("Check-up anual", consulta.getMotivo());
         assertEquals("Animal saudável, vacinação em dia", consulta.getDiagnostico());
 
@@ -69,7 +69,7 @@ public class ConsultaTest extends BaseTest {
 
         assertNotNull(veterinario);
         assertEquals("Dr. João Silva", veterinario.getNome());
-        assertEquals("CRM-PE-12345", veterinario.getCrmv());
+        assertEquals("CRMV-PE-12345", veterinario.getCrmv());
         assertEquals("Clínica Geral", veterinario.getEspecialidade());
     }
 

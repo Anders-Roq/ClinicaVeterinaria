@@ -6,6 +6,7 @@ import java.util.List;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Size;
 
 
@@ -19,28 +20,28 @@ public class Consulta implements Serializable {
     @Column(name = "CON_ID")
     private Long idConsulta;
 
-    @NotNull
+    @NotNull(message = "{consulta.data.notnull}")
     @Column(name = "CON_DT_CONSULTA")
+    @PastOrPresent
     private LocalDateTime dataConsulta;
     
-    // Motivo da consulta.
-    @NotBlank
-    @Size(min = 10, max = 255)
+    @NotBlank(message = "{consulta.motivo.notblank}")
+    @Size(min = 10, max = 255, message = "{consulta.motivo.size}")
     @Column(name = "CON_MOTIVO")
     private String motivo;
     
-    
-    @Size(min = 10, max = 255)
+    @NotBlank(message = "{consulta.diagnostico.notblank}")
+    @Size(min = 10, max = 255, message = "{consulta.disgnostico.size}")
     @Column(name = "CON_DIAGNOSTICO") //Nullable TRUE, pois pode ser preenchido posteriormente
     private String diagnostico;
     
     
-    @NotNull
+    @NotNull(message = "{consulta.animal.notnull}")
     @ManyToOne
     @JoinColumn(name = "ANI_ID")    
     private Animal animal;
     
-    @NotNull
+    @NotNull(message = "{consulta.veterinario.notnull}")
     @ManyToOne
     @JoinColumn(name = "VET_ID")
     private Veterinario veterinario;

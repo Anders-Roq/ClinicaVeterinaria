@@ -3,7 +3,6 @@ package com.dsc.clinicaveterinaria;
 
 import java.io.Serializable;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -18,27 +17,27 @@ public class Prescricao implements Serializable {
     @Column(name = "PRE_ID")
     private Long idPrescricao;
 
-    @NotBlank
+    @NotBlank(message = "{prescricao.medicamento.notblank}")
     @Size(min = 5, max = 50)    
     @Column(name = "PRE_MEDICAMENTO")
     private String medicamento;
     
-    @NotBlank
+    @NotBlank(message = "{prescricao.dosagem.notblank}")
     @Size(max = 30)
     @Column(name = "PRE_DOSAGEM")
     private String dosagem;
     
-    @NotBlank
+    @NotBlank(message = "{prescricao.frequencia.notblank}")
     @Size(max = 30)    
     @Column(name = "PRE_FREQUENCIA")
     private String frequencia;
     
-    @NotBlank  
+    @NotBlank(message = "{prescricao.duracao.notblank}")
     @Size(max = 30)    
     @Column(name = "PRE_DURACAO")
     private String duracao;
 
-    @NotNull
+    @NotNull(message = "{prescricao.consulta.notnull}")
     @ManyToOne
     @JoinColumn(name = "CON_ID")
     private Consulta consulta;

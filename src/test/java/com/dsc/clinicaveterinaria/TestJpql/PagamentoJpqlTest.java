@@ -46,8 +46,8 @@ public class PagamentoJpqlTest extends BaseTest {
                 + "WHERE p.dataPagamento BETWEEN :inicio AND :fim";
 
         TypedQuery<Double> queryEntre = em.createQuery(jpqlBetween, Double.class);
-        queryEntre.setParameter("inicio", LocalDateTime.of(2024, 1, 15, 10, 30, 0));
-        queryEntre.setParameter("fim", LocalDateTime.of(2024, 7, 29, 16, 10, 0));
+        queryEntre.setParameter("inicio", LocalDateTime.of(2026, 1, 1, 10, 30, 0));
+        queryEntre.setParameter("fim", LocalDateTime.of(2026, 3, 1, 16, 10, 0));
 
         double maiorValor = queryEntre.getSingleResult();
 

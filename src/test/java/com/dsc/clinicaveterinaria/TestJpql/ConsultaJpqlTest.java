@@ -20,8 +20,8 @@ public class ConsultaJpqlTest extends BaseTest {
                 + "ORDER BY c.dataConsulta";
 
         TypedQuery<Consulta> query = em.createQuery(jpql, Consulta.class);
-        query.setParameter("inicio", LocalDate.of(2024, 1, 1));
-        query.setParameter("fim", LocalDate.of(2024, 12, 31));
+        query.setParameter("inicio", LocalDate.of(2026, 1, 1));
+        query.setParameter("fim", LocalDate.of(2026, 1, 3));
 
         List<Consulta> consultas = query.getResultList();
 

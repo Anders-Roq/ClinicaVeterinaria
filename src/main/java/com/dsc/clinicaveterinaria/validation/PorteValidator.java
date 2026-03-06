@@ -18,8 +18,9 @@ public class PorteValidator implements ConstraintValidator<PorteValido, String> 
     @Override
     public boolean isValid(String valor, ConstraintValidatorContext context) {
 
-        if (valor == null) {
-            return true; // @NotBlank trata null
+        // Se for null ou vazio, deixa o @NotBlank tratar
+        if (valor == null || valor.trim().isEmpty()) {
+            return true;
         }
 
         return portesValidos.contains(valor);

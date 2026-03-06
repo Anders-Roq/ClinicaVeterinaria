@@ -62,6 +62,7 @@ public class AnimalTest extends BaseTest {
         gato.setEspecie("Gato");
         gato.setRaca("Persa");
         gato.setSexo('M');
+        gato.setPelagem("Curta");
         gato.setDataNascimento(LocalDate.of(2023, 10, 25));
         gato.setCliente(cliente);
         gato.setGostaDeCaixa(true);

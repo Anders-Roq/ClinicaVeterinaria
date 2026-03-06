@@ -1,5 +1,6 @@
 package com.dsc.clinicaveterinaria;
 
+import com.dsc.clinicaveterinaria.validation.PorteValido;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
@@ -19,6 +20,7 @@ public class Cachorro extends Animal {
 
     @NotBlank(message = "{cachorro.porte.notblank}")
     @Size(max = 30, message = "{cachorro.porte.size}")
+    @PorteValido
     @Column(name = "CACHORRO_PORTE")
     private String porte;
 
@@ -44,12 +46,3 @@ public class Cachorro extends Animal {
     public void setAdestrado(Boolean adestrado) { this.adestrado = adestrado; }
 }
     
-   
-    
-    
-    
-    
-    
-    
-    
-

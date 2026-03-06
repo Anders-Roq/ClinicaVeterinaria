@@ -23,14 +23,50 @@ public class Main {
         Cliente cliente5 = new Cliente("Carlos", "268.218.560-60", "555555555", "carlos@mail.com", "Av. Principal, 789");
 
         //Animais
-        Gato g1 = new Gato("Fofinho", "Gato", "Laranja", 'M', LocalDate.of(2020, 5, 10), cliente1, true, true);
-        Cachorro c1 = new Cachorro("Rex", "Cachorro", "Pastor Alemão", 'M', LocalDate.of(2022, 7, 1), cliente1, "Grande", true);
-        Gato g2 = new Gato("Luna", "Gato", "Branca", 'F', LocalDate.of(2019, 1, 1), cliente2, true, false);
-        Cachorro c2 = new Cachorro("Chuchu", "Cachorro", "Pug", 'M', LocalDate.of(2021, 5, 9), cliente3, "Pequeno", true);
-        Cachorro c3 = new Cachorro("Mel", "Cachorro", "Golden Retriever", 'F', LocalDate.of(2020, 3, 15), cliente4, "Grande", true);
-        Cachorro c4 = new Cachorro("Thor", "Cachorro", "Bulldog", 'M', LocalDate.of(2018, 8, 20), cliente4, "Medio", false);
-        Gato g3 = new Gato("Nina", "Gato", "Siamesa", 'F', LocalDate.of(2022, 2, 14), cliente5, false, true);
-        Cachorro c5 = new Cachorro("Bob", "Cachorro", "Labrador", 'M', LocalDate.of(2019, 11, 30), cliente5, "Grande", true);
+       //Animais
+Gato g1 = new Gato(
+        "Fofinho", 
+        "Gato", 
+        "Laranja", 
+        'M', 
+        LocalDate.of(2020, 5, 10), 
+        cliente1, 
+        true, 
+        true,
+        "Curta"
+);
+
+Cachorro c1 = new Cachorro("Rex", "Cachorro", "Pastor Alemão", 'M', LocalDate.of(2022, 7, 1), cliente1, "Grande", true);
+
+Gato g2 = new Gato(
+        "Luna", 
+        "Gato", 
+        "Branca", 
+        'F', 
+        LocalDate.of(2019, 1, 1), 
+        cliente2, 
+        true, 
+        false,
+        "Longa"
+);
+
+Cachorro c2 = new Cachorro("Chuchu", "Cachorro", "Pug", 'M', LocalDate.of(2021, 5, 9), cliente3, "Pequeno", true);
+Cachorro c3 = new Cachorro("Mel", "Cachorro", "Golden Retriever", 'F', LocalDate.of(2020, 3, 15), cliente4, "Grande", true);
+Cachorro c4 = new Cachorro("Thor", "Cachorro", "Bulldog", 'M', LocalDate.of(2018, 8, 20), cliente4, "Medio", false);
+
+Gato g3 = new Gato(
+        "Nina", 
+        "Gato", 
+        "Siamesa", 
+        'F', 
+        LocalDate.of(2022, 2, 14), 
+        cliente5, 
+        false, 
+        true,
+        "Curta"
+);
+
+Cachorro c5 = new Cachorro("Bob", "Cachorro", "Labrador", 'M', LocalDate.of(2019, 11, 30), cliente5, "Grande", true);
         
         // Animais dos clientes
         cliente1.setAnimais(new ArrayList<>(List.of(g1, c1)));

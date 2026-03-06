@@ -21,29 +21,29 @@ public class Cliente implements Serializable {
     private Long idCliente;
     
 
-    @NotBlank(message = "Campo Nome é Obrigatório")
-    @Size(min = 3, max = 50, message = "Deve ter entre 3 e 50 caracteres.")
+    @NotBlank(message = "{cliente.nome.notblank}")
+    @Size(min = 3, max = 50, message = "{cliente.nome.size}")
     @Column(name = "CLI_NOME")
     private String nome;
 
-    @NotNull()
-    @CPF()
+    @NotNull(message = "{cliente.cpf.notnull}")
+    @CPF(message = "{cliente.cpf}")
     @Column(name = "CLI_CPF", unique = true)
     private String cpf;
 
-    @NotBlank(message = "Telefone é obrigatório.")
-    @Pattern(regexp = "\\d{9}", message = "Não precisa do DDD")
-    @Size(min =9, max = 9, message = "Deve conter 9 digitos")
+    @NotBlank(message = "{cliente.telefone.notblank}")
+    @Pattern(regexp = "\\d{9}")
+    @Size(min =9, max = 9, message = "{cliente.telefone.size}")
     @Column(name = "CLI_TELEFONE")
     private String telefone;
 
-    @NotBlank
-    @Email
+    @NotBlank(message = "{cliente.email.noblank}")
+    @Email(message = "{cliente.email}")
     @Size(max = 30)
     @Column(name = "CLI_EMAIL")
     private String email;
 
-    @NotBlank(message = "Endereço é obrigatório, apenas nome da rua, bairro e numero")
+    @NotBlank(message = "{cliente.endereco.noblank}")
     @Size(max = 255)
     @Column(name = "CLI_ENDERECO")
     private String endereco;

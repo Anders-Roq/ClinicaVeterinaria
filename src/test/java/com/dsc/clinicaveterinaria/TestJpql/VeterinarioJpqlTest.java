@@ -57,13 +57,13 @@ public class VeterinarioJpqlTest extends BaseTest {
                 "SELECT v FROM Veterinario v WHERE v.crmv = :crmv",
                 Veterinario.class
         );
-        query.setParameter("crmv", "CRM-PE-12345");
+        query.setParameter("crmv", "CRMV-PE-12345");
 
         List<Veterinario> vets = query.getResultList();
 
         assertNotNull(vets);
         assertFalse(vets.isEmpty());
-        assertEquals("CRM-PE-12345", vets.get(0).getCrmv());
+        assertEquals("CRMV-PE-12345", vets.get(0).getCrmv());
     }
    
     @Test

@@ -22,7 +22,7 @@ public class PrescricaoTest extends BaseTest {
 
         // Criar consulta nova para vincular à prescrição
         Consulta consulta = new Consulta(
-                LocalDateTime.of(2025, 1, 15, 10, 30),
+                LocalDateTime.of(2026, 1, 15, 10, 30),
                 "Consulta de acompanhamento",
                 "Animal apresenta boa evolução",
                 animal,

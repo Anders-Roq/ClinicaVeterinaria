@@ -1,10 +1,12 @@
 package com.dsc.clinicaveterinaria;
 
+import com.dsc.clinicaveterinaria.validation.ValorValido;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
@@ -19,22 +21,23 @@ public class Pagamento implements Serializable {
     @Column(name = "PAG_ID")
     private Long idPagamento;
     
-    @Positive    
+    @Positive(message = "{pagamento.valortotal.positive}")
     @Column(name = "PAG_VALOR_TOTAL") 
     private double valorTotal;
     
-    @NotBlank
+    @NotBlank(message = "{pagamento.metodopagamento.notblank}")
     @Size(min = 3, max = 30)    
     @Column(name = "PAG_METODO")
     private String metodoPagamento;
     
 
-    @NotNull
+    @NotNull(message = "{pagamento.datapagamento.notnull}")
     @Column(name = "PAG_DT_PAGAMENTO")
+    @PastOrPresent
     private LocalDateTime dataPagamento;
 
 
-    @NotNull
+    @NotNull(message = "{pagamento.consulta.notnull}")
     @OneToOne
     // UNIQUE TRUE para garantir o One-to-One.
     @JoinColumn(name = "CON_ID", unique = true) 
